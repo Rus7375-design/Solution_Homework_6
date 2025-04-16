@@ -6,11 +6,13 @@ public class JuniorSupportHandler extends AbstractSupportHandler {
 
     @Override
     public void handle(String issue) {
+        logTry("JuniorSupport", issue);
         if (supportedIssues.contains(issue)) {
-            System.out.println("[JuniorSupport] Запрос обработан: " + issue);
+            System.out.println("[FAQBot] Запрос обработан: " + issue);
         } else {
-            System.out.println("[JuniorSupport] Не удалось обработать запрос: " + issue + " — передаём дальше...");
+            System.out.println("[FAQBot] Не удалось обработать запрос: " + issue + " — передаём дальше...");
             passToNext(issue);
         }
     }
+
 }

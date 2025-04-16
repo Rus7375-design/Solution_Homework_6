@@ -14,4 +14,8 @@ public abstract class AbstractSupportHandler implements SupportHandler {
             System.out.println("[Система] Нет обработчика для запроса: " + issue);
         }
     }
+
+    protected void logTry(String handlerName, String issue) {
+        System.out.println("⏳ [" + handlerName + "] Пытается обработать: " + issue);
+    }
 }

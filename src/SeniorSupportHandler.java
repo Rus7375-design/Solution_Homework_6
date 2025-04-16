@@ -6,10 +6,13 @@ public class SeniorSupportHandler extends AbstractSupportHandler {
 
     @Override
     public void handle(String issue) {
+        logTry("SeniorSupport", issue);
         if (supportedIssues.contains(issue)) {
-            System.out.println("[SeniorSupport] Запрос обработан: " + issue);
+            System.out.println("[FAQBot] Запрос обработан: " + issue);
         } else {
-            System.out.println("[SeniorSupport] Не удалось обработать запрос: " + issue + " — требуется ручная эскалация");
+            System.out.println("[FAQBot] Не удалось обработать запрос: " + issue + " — передаём дальше...");
+            passToNext(issue);
         }
     }
+
 }
