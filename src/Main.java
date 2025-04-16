@@ -1,11 +1,19 @@
+import java.util.Arrays;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        SupportHandler faq = new FAQBotHandler();
-        SupportHandler junior = new JuniorSupportHandler();
-        SupportHandler senior = new SeniorSupportHandler();
+        // Создаём обработчики
+        List<SupportHandler> handlers = Arrays.asList(
+                new FAQBotHandler(),
+                new JuniorSupportHandler(),
+                new SeniorSupportHandler()
+        );
 
-        faq.setNext(junior).setNext(senior);
+        // Собираем цепочку динамически
+        SupportHandler chain = SupportChainBuilder.buildChain(handlers);
 
+        // Список запросов
         String[] issues = {
                 "password_reset",
                 "refund_request",
@@ -15,7 +23,7 @@ public class Main {
 
         for (String issue : issues) {
             System.out.println("▶ Обрабатываем запрос: " + issue);
-            faq.handle(issue);
+            chain.handle(issue);
             System.out.println();
         }
     }
