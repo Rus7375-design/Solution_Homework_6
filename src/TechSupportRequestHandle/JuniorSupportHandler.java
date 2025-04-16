@@ -1,3 +1,7 @@
+package TechSupportRequestHandle;
+
+import TechSupportRequestHandle.AbstractSupportHandler;
+
 import java.util.Arrays;
 import java.util.List;
 public class JuniorSupportHandler extends AbstractSupportHandler {
